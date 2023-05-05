@@ -69,7 +69,7 @@ function sendMessage() {
         }
         input.value = "";
         createMessage(artist, "user");
-        fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=${apiKey}&format=json`)
+        fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=${apiKey}&format=json`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -97,7 +97,7 @@ function sendMessage() {
         }
         input.value = "";
         createMessage(genre, "user");
-        fetch(`http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=${genre}&api_key=${apiKey}&format=json`)
+        fetch(`https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=${genre}&api_key=${apiKey}&format=json`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -128,7 +128,7 @@ function sendMessage() {
         }
         input.value = "";
         createMessage(line, "user");
-        fetch(`http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=${artist}&track=${track}&api_key=${apiKey}&format=json`)
+        fetch(`https://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=${artist}&track=${track}&api_key=${apiKey}&format=json`)
         .then(response => response.json())
         .then(data => {
           console.log(data);
@@ -156,7 +156,7 @@ function sendMessage() {
         }
         input.value = "";
         createMessage(genre, "user");
-        fetch(`http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=${genre}&api_key=${apiKey}&format=json`)
+        fetch(`https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=${genre}&api_key=${apiKey}&format=json`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
