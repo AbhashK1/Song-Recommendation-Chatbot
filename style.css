@@ -48,4 +48,15 @@ body {
   .input button:hover {
     background-color: #0d8bf0;
   }
+
+  .title{
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:floralwhite;
+  }
+
+  body{
+    background-image: url('bg.jpg');
+    background-size: cover;
+  }
   
