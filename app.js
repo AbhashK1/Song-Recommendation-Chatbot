@@ -8,16 +8,27 @@ const botName="ChatBot";
 const speech=false;
 
 //Create Message
-function createMessage(text, sender) {
+function createMessage(text, url, sender) {
   const message = document.createElement("div");
   message.style.padding="3px";
   if(sender=="bot")
   {
     message.classList.add("message");
     message.classList.add(sender);
-    message.textContent =text;
+    //message.textContent =text;
     message.style.fontStyle="italic";
-    conversation.appendChild(message);
+    
+    //add link to text
+    const link = document.createElement("a");
+    link.href = url;
+    link.textContent = text;
+    link.target = "_blank";
+    link.style.color = "inherit"; // Set link color to inherit from parent
+    link.style.textDecoration = "none";
+    message.appendChild(link); //append link to message
+
+    conversation.appendChild(message); //append message to conversation
+
     Speech(text);
   }
   else
@@ -79,7 +90,7 @@ function sendMessage() {
             const tracks = data.toptracks.track.slice(0, 5); 
             createMessage(`${botName}: Here are some top songs by ${artist}:`, "bot");
             tracks.forEach(track => {
-                createMessage(`${track.name} by ${track.artist.name}`, "bot");
+                createMessage(`${track.name} by ${track.artist.name}`,track.url, "bot");
             });
             }
         })
@@ -107,7 +118,7 @@ function sendMessage() {
             const tracks = data.tracks.track.slice(0, 5); 
             createMessage(`${botName}: Here are some top songs for ${genre}:`, "bot");
             tracks.forEach(track => {
-                createMessage(`${track.name} by ${track.artist.name}`, "bot");
+                createMessage(`${track.name} by ${track.artist.name}`,track.url, "bot");
             });
             }
         })
@@ -139,7 +150,7 @@ function sendMessage() {
             const tracks = data.similartracks.track.slice(0, 5); 
             createMessage(`${botName}: Here are some similar songs:`, "bot");
             tracks.forEach(track => {
-                createMessage(`${track.name} by ${track.artist.name}`, "bot");
+                createMessage(`${track.name} by ${track.artist.name}`,track.url, "bot");
             });
             }
         })
@@ -163,10 +174,11 @@ function sendMessage() {
             createMessage(`Sorry, I couldn't find any songs for ${genre}.`, "bot");
             help();
             } else {
+                console.log(data);
             const tracks = data.tracks.track.slice(0, 5); 
             createMessage(`${botName}: Here are some top songs for ${genre}:`, "bot");
             tracks.forEach(track => {
-                createMessage(`${track.name} by ${track.artist.name}`, "bot");
+                createMessage(`${track.name} by ${track.artist.name}`,track.url, "bot");
             });
             }
         })
